@@ -2,16 +2,27 @@
 # Resources
 # ------------------------------------------------------------------------------
 
-/* resource "commandpersistence_cmd" "which_python" {
-  program = ["which", "python"]
 
+
+
+resource "terraform_data" "test" {
+  # this resource exists purely for splunking the TFC/E workspace
+  provisioner "local-exec" {
+    command = "ls -lia"
+  }
+  provisioner "local-exec" {
+    command = "pwd"
+  }
+  provisioner "local-exec" {
+    command = "cat ${path.module}/.terraform/modules/modules.json | jq . "
+  }
+  provisioner "local-exec" {
+    command = "jq ' .Modules[] | { module: .Key, version: .Version  }'  .terraform/modules/modules.json "
+  }
 }
-resource "commandpersistence_cmd" "which_jq" {
-  program = ["which", "jq"]
 
+resource "commandpersistence_cmd" "cat_modules_json" {
+  program = ["jq", ".Modules[] | { module: .Key, version: .Version  }", " ${path.module}/.terraform/modules/modules.json "
+  ]
+  working_dir = path.module
 }
-resource "commandpersistence_cmd" "terraform_module_versions" {
-  program = ["jq", "\".Modules\" .terraform/modules/modules.json"]
-
-} */
-
