@@ -4,11 +4,12 @@ This module is created to expose the module versions in a Terraform run.
 
 The epp0/environment provider is used to allow you to go splunking through run and environment data.
 
-The main contribution, is a use of the terraform local resource to pull the `./terraform/modules/modules.json` file contant has json data that can be utilised
+The main contribution, is a use of the terraform local resource to pull the `./terraform/modules/modules.json` file content as json data that can be utilised with policy enforcement and other features.
+
 
 ## Usage
 
-
+see [examples](./examples/) folder and [default example](./examples/default/README.md)
 
 ## Authors
 
