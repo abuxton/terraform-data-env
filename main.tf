@@ -21,8 +21,7 @@ resource "terraform_data" "test" {
   }
 }
 
-resource "commandpersistence_cmd" "cat_modules_json" {
-  program = ["jq", ".Modules[] | { module: .Key, version: .Version  }", " ${path.module}/.terraform/modules/modules.json "
-  ]
-  working_dir = path.module
+
+data "local_file" "modules_json" {
+  filename = "${path.module}/.terraform/modules/modules.json"
 }

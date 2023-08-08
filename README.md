@@ -1,17 +1,14 @@
-# Terraform module template
+# Terraform data env
 
-[![latest release](https://img.shields.io/github/v/release/telia-oss/terraform-module-template?style=flat-square)](https://github.com/telia-oss/terraform-module-template/releases/latest)
-[![build status](https://img.shields.io/github/actions/workflow/status/telia-oss/terraform-module-template/main.yml?branch=master&logo=github&style=flat-square)](https://github.com/telia-oss/terraform-module-template/actions/workflows/main.yml)
+This module is created to expose the module versions in a Terraform run. 
 
-Terraform module which creates _describe your intent_ resources on AWS.
+The epp0/environment provider is used to allow you to go splunking through run and environment data.
+
+The main contribution, is a use of the terraform local resource to pull the `./terraform/modules/modules.json` file contant has json data that can be utilised
 
 ## Usage
 
-Use this template to scaffold a new terraform module. Remember to change the following:
 
-- The descriptions and build badges in this [README](README.md).
-- Update the [basic](examples/basic/README.md) and [complete](examples/complete/README.md) examples
-- Update the [e2e tests](test/).
 
 ## Authors
 
@@ -27,15 +24,14 @@ MIT License. See [LICENSE](LICENSE) for full details.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
-| <a name="requirement_commandpersistence"></a> [commandpersistence](#requirement\_commandpersistence) | 1.1.0 |
 | <a name="requirement_environment"></a> [environment](#requirement\_environment) | 1.3.4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_commandpersistence"></a> [commandpersistence](#provider\_commandpersistence) | 1.1.0 |
 | <a name="provider_environment"></a> [environment](#provider\_environment) | 1.3.4 |
+| <a name="provider_local"></a> [local](#provider\_local) | 2.4.0 |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules
@@ -48,9 +44,9 @@ MIT License. See [LICENSE](LICENSE) for full details.
 
 | Name | Type |
 |------|------|
-| [commandpersistence_cmd.cat_modules_json](https://registry.terraform.io/providers/terrycain/commandpersistence/1.1.0/docs/resources/cmd) | resource |
 | [terraform_data.test](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [environment_variables.all](https://registry.terraform.io/providers/EppO/environment/1.3.4/docs/data-sources/variables) | data source |
+| [local_file.modules_json](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 
@@ -60,6 +56,6 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_commadpersistence_cmd_cat_modules_json"></a> [commadpersistence\_cmd\_cat\_modules\_json](#output\_commadpersistence\_cmd\_cat\_modules\_json) | The output of the commandpersistence\_cmd resource |
 | <a name="output_environment_data_all"></a> [environment\_data\_all](#output\_environment\_data\_all) | All environment variables, derived from Epp0/environment provider |
+| <a name="output_modules_json"></a> [modules\_json](#output\_modules\_json) | The content of the modules.json file |
 <!-- END_TF_DOCS -->

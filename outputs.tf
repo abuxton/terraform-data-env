@@ -6,8 +6,9 @@ output "environment_data_all" {
   description = "All environment variables, derived from Epp0/environment provider"
 }
 
-output "commadpersistence_cmd_cat_modules_json" {
-  value       = commandpersistence_cmd.cat_modules_json.result
-  description = "The output of the commandpersistence_cmd resource "
+
+output "modules_json" {
+  value       = jsondecode(data.local_file.modules_json.content)
+  description = "The content of the modules.json file"
 }
 
