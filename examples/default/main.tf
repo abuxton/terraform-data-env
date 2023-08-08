@@ -4,6 +4,6 @@ module "terraform_data_env" {
 }
 
 output "terraform_module_versions" {
-  value       = module.terraform_data_env.terraform_module_versions
+  value       = module.terraform_data_env.modules_json
   description = "The versions of the modules used in this configuration"
 }

@@ -11,6 +11,41 @@ The main contribution, is a use of the terraform local resource to pull the `./t
 
 see [examples](./examples/) folder and [default example](./examples/default/README.md)
 
+### Sentinel usage
+
+the data is exposed as an out put in mock-tfstate-v2.sentinel
+
+```json
+outputs = {
+    ...
+"modules_json": {
+		"name":      "modules_json",
+		"sensitive": false,
+		"value": {
+			"Modules": [
+                ...
+				{
+					"Dir":     ".terraform/modules/helloworld",
+					"Key":     "helloworld",
+					"Source":  "registry.terraform.io/briancain/helloworld/aws",
+					"Version": "2020.4.21",
+				},
+
+```
+
+while the mock-tfconfig-v2.sentinel only shows the constraint not the actual module
+
+```json
+
+module_calls = {
+...
+        "source":             "briancain/helloworld/aws",
+		"version_constraint": "> 2020.3",
+	},
+
+```
+worth noting the raw data is also available in the local resource which parses the file, but that is a much more complex structure to operate over.
+
 ## Authors
 
 Currently maintained by [these contributors](../../graphs/contributors).

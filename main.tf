@@ -3,8 +3,6 @@
 # ------------------------------------------------------------------------------
 
 
-
-
 resource "terraform_data" "test" {
   # this resource exists purely for splunking the TFC/E workspace
   provisioner "local-exec" {
