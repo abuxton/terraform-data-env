@@ -8,13 +8,7 @@ terraform {
       version = "1.3.4"
     }
   }
-  cloud {
-    organization = "abc-vmp"
 
-    workspaces {
-      name = "test-data-env"
-    }
-  }
 }
 
 /* provider "environment" {
