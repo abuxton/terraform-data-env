@@ -4,7 +4,7 @@
 
 
 resource "terraform_data" "test" {
-  # this resource exists purely for splunking the TFC/E workspace
+  # This resource exists purely for spelunking the TFC/E workspace
   provisioner "local-exec" {
     command = "ls -lia"
   }
@@ -12,7 +12,7 @@ resource "terraform_data" "test" {
     command = "pwd"
   }
   provisioner "local-exec" {
-    command = "cat ${path.module}/.terraform/modules/modules.json | jq . "
+    command = "cat ${path.cwd}/.terraform/modules/modules.json | jq . "
   }
   provisioner "local-exec" {
     command = "jq ' .Modules[] | { module: .Key, version: .Version  }'  .terraform/modules/modules.json "
@@ -21,5 +21,5 @@ resource "terraform_data" "test" {
 
 
 data "local_file" "modules_json" {
-  filename = "${path.module}/.terraform/modules/modules.json"
+  filename = "${path.cwd}/.terraform/modules/modules.json"
 }
