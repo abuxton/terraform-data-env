@@ -1,9 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-# Terraform docs configuration file
-# Only setting non-default values
-
 formatter: "markdown table"
 sort:
   by: required

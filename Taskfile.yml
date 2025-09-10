@@ -41,7 +41,7 @@ tasks:
     desc: Generate terraform docs configuration
     cmds:
       - |
-        cat << EOF >> .terraform-docs.yml
+        cat << EOF > .terraform-docs.yml
         formatter: "markdown table"
         sort:
           by: required
@@ -49,7 +49,7 @@ tasks:
           file: README.md
         settings:
           hide-empty: true
-          lockfile: false"
+          lockfile: false
         EOF
 
 
