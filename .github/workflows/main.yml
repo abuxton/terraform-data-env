@@ -28,8 +28,9 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run tests
-        run: task test
-
+        run: |
+          task test-terraform
+          task terraform-docs
       - name: Check git status
         run: |
           status=$(git status --porcelain)
