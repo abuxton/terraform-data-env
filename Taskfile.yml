@@ -115,11 +115,15 @@ tasks:
     preconditions:
       - sh: test -x "$(which gh 2>/dev/null)"
         msg: 'GH CLI required. See https://cli.github.com/.'
+      - sh: test -n "{{.MOD_RELEASE}}"
+        msg: 'MOD_RELEASE environment variable required. See .env.local.example. MOD_RELEASE should be a semver tag like v1.2.3 and greater than current tag {{.SEMVER_TAG}}'
     vars:
       MOD_REPO:
         sh: echo "${PWD##*/}"
       REPO_OWNER:
         sh: git config --local branch.abc-updates.github-pr-base-branch | cut -d'#' -f1
+      SEMVER_TAG:
+        sh: git describe  --tags --abbrev=0
     cmds:
       - |
         export MOD_REPO="{{.MOD_REPO}}"
