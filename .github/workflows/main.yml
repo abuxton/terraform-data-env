@@ -30,7 +30,7 @@ jobs:
       - name: Run tests
         run: |
           task test-terraform
-					task generate-terraform-docs-config
+          task generate-terraform-docs-config
           task terraform-docs
       - name: Check git status
         run: |
