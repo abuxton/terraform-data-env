@@ -129,15 +129,15 @@ tasks:
         export MOD_REPO="{{.MOD_REPO}}"
         export MOD_RELEASE="{{.MOD_RELEASE}}"
         export REPO_OWNER="{{.REPO_OWNER}}"
-        echo "Releasing {{.REPO_OWNER}}/{{.MOD_REPO}} version {{.MOD_RELEASE}"
+        echo "Releasing {{.REPO_OWNER}}/{{.MOD_REPO}} version {{.MOD_RELEASE}}"
       - git checkout -b rel-${MOD_RELEASE}
-      - git commit  -am "Release version ${MOD_RELEASE}"
+      # - git commit  -am "Release version ${MOD_RELEASE}"
       - git tag -a ${MOD_RELEASE} -m "${MOD_RELEASE} release"
       - git revert HEAD --no-edit
       - git push origin --tags
       - git push origin rel-${MOD_RELEASE}
       - |
         gh release create {{.MOD_RELEASE}} \
-        --repo {{.REPO_OWNER}}/{{.MOD_REPO} \
+        --repo {{.REPO_OWNER}}/{{.MOD_REPO}} \
         --title "{{.MOD_RELEASE}}" \
         --generate-notes --verify-tag
