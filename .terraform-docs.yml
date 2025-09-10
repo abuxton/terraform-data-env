@@ -1,0 +1,8 @@
+formatter: "markdown table"
+sort:
+  by: required
+output:
+  file: README.md
+settings:
+  hide-empty: true
+  lockfile: false

@@ -2,12 +2,14 @@ version: '3'
 
 env:
   TERM: screen-256color
-  AWS_DEFAULT_REGION: eu-west-1
+dotenv:
+  - ".env.local"
 
 tasks:
   default:
+    desc: List all tasks
     cmds:
-      - task: test
+      - task --list-all
 
   test:
     desc: Run tests.
@@ -25,6 +27,31 @@ tasks:
     desc: Clean the go environment (go mod tidy)
     cmds:
       - go mod tidy
+
+  terraform-docs:
+    desc: Update terraform docs
+    preconditions:
+      - sh: test -f ".terraform-docs.yml"
+        msg: '.terraform-docs.yml required. Run "task generate-terraform-docs-config" to create it.'
+    cmds:
+      - cat .terraform-docs.yml
+      - terraform-docs .
+
+  generate-terraform-docs-config:
+    desc: Generate terraform docs configuration
+    cmds:
+      - |
+        cat << EOF > .terraform-docs.yml
+        formatter: "markdown table"
+        sort:
+          by: required
+        output:
+          file: README.md
+        settings:
+          hide-empty: true
+          lockfile: false
+        EOF
+
 
   clean-terraform:
     desc: Clean the terraform environment (remove terraform directories and files)
@@ -52,7 +79,7 @@ tasks:
 
         CWD=$PWD
 
-        for d in $DIRECTORIES; do 
+        for d in $DIRECTORIES; do
           cd $d
           echo "${BOLD}$PWD:${NORM}"
 
@@ -82,3 +109,35 @@ tasks:
     silent: true
     cmds:
       - go test -v ./... -timeout=1h
+
+  release:
+    desc: Create a new release.
+    preconditions:
+      - sh: test -x "$(which gh 2>/dev/null)"
+        msg: 'GH CLI required. See https://cli.github.com/.'
+      - sh: test -n "{{.MOD_RELEASE}}"
+        msg: 'MOD_RELEASE environment variable required. See .env.local.example. MOD_RELEASE should be a semver tag like v1.2.3 and greater than current tag {{.SEMVER_TAG}}'
+    vars:
+      MOD_REPO:
+        sh: echo "${PWD##*/}"
+      REPO_OWNER:
+        sh: git config --local branch.abc-updates.github-pr-base-branch | cut -d'#' -f1
+      SEMVER_TAG:
+        sh: git describe  --tags --abbrev=0
+    cmds:
+      - |
+        export MOD_REPO="{{.MOD_REPO}}"
+        export MOD_RELEASE="{{.MOD_RELEASE}}"
+        export REPO_OWNER="{{.REPO_OWNER}}"
+        echo "Releasing ${REPO_OWNER}/${MOD_REPO} version ${MOD_RELEASE}"
+      - git checkout -b rel-${MOD_RELEASE}
+      - git commit --all --message "Release version ${MOD_RELEASE}"
+      - git tag -a ${MOD_RELEASE} -m "${MOD_RELEASE} release"
+      - git revert HEAD --no-edit
+      - git push origin --tags
+      - git push origin rel-${MOD_RELEASE}
+      - |
+        gh release create ${MOD_RELEASE} \
+        --repo ${REPO_OWNER}/${MOD_REPO} \
+        --title "${MOD_RELEASE}" \
+        --generate-notes --verify-tag
