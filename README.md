@@ -59,34 +59,36 @@ MIT License. See [LICENSE](LICENSE) for full details.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
-| <a name="requirement_environment"></a> [environment](#requirement\_environment) | 1.3.4 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.9 |
+| <a name="requirement_environment"></a> [environment](#requirement\_environment) | 1.3.8 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_environment"></a> [environment](#provider\_environment) | 1.3.4 |
-| <a name="provider_local"></a> [local](#provider\_local) | 2.4.0 |
+| <a name="provider_environment"></a> [environment](#provider\_environment) | 1.3.8 |
+| <a name="provider_local"></a> [local](#provider\_local) | n/a |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_helloworld"></a> [helloworld](#module\_helloworld) | briancain/helloworld/aws | 2020.4.21 |
+| <a name="module_helloworld"></a> [helloworld](#module\_helloworld) | briancain/helloworld/aws | > 2020.3 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
 | [terraform_data.test](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
-| [environment_variables.all](https://registry.terraform.io/providers/EppO/environment/1.3.4/docs/data-sources/variables) | data source |
+| [environment_variables.all](https://registry.terraform.io/providers/EppO/environment/1.3.8/docs/data-sources/variables) | data source |
 | [local_file.modules_json](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_demo_module_bool"></a> [demo\_module\_bool](#input\_demo\_module\_bool) | (Optional) Boolean whether to use demo module or not | `bool` | `false` | no |
 
 ## Outputs
 
