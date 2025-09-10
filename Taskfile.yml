@@ -131,7 +131,7 @@ tasks:
         export REPO_OWNER="{{.REPO_OWNER}}"
         echo "Releasing ${REPO_OWNER}/${MOD_REPO} version ${MOD_RELEASE}"
       - git checkout -b rel-${MOD_RELEASE}
-      - git commit --all --message "Release version ${MOD_RELEASE}"
+      - git commit  -am "Release version ${MOD_RELEASE}"
       - git tag -a ${MOD_RELEASE} -m "${MOD_RELEASE} release"
       - git revert HEAD --no-edit
       - git push origin --tags
