@@ -40,3 +40,4 @@ crash.log
 
 # Taskfile
 .task/
+.env.local
