@@ -26,7 +26,11 @@ jobs:
         with:
           version: '3.x'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: install terraform-docs
+        uses: terraform-docs/gh-actions@v1.4.1
+        with:
+          working-dir: .
+          git-push: "false"
       - name: Run tests
         run: |
           task test-terraform
