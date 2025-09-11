@@ -77,10 +77,7 @@ def find_markdown_files(directory: Path) -> List[Path]:
     """Find all markdown files in the directory tree."""
     markdown_files = []
     for ext in ['.md', '.markdown']:
-        if markdown_files.extend(directory.rglob('.github/**')) or markdown_files.extend(directory.rglob('.terraform/**')):
-           continue
-        else:
-            markdown_files.extend(directory.rglob(f'*{ext}'))
+        markdown_files.extend(directory.rglob(f'*{ext}'))
     return sorted(markdown_files)
 
 def process_file(file_path: Path, base_url: str, root_dir: Path, dry_run: bool = False, overwrite: bool = False) -> Tuple[bool, str]:
