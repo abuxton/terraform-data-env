@@ -16,12 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Cofiguring Git
-        run: |-
-          git config user.name $GITHUB_ACTOR
-          git config user.email gh-actions-${GITHUB_ACTOR}@github.com
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install Go
         uses: actions/setup-go@v4
