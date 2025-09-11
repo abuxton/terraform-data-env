@@ -116,7 +116,7 @@ tasks:
       - sh: test -x "$(which gh 2>/dev/null)"
         msg: 'GH CLI required. See https://cli.github.com/.'
       - sh: test -n "{{.MOD_RELEASE}}"
-        msg: 'MOD_RELEASE environment variable required. See .env.local.example. MOD_RELEASE should be a semver tag like v1.2.3 and greater than current tag {{.SEMVER_TAG}}'
+        msg: 'MOD_RELEASE environment variable required. MOD_RELEASE should be a semver tag like `1.2.3`` and greater than current tag {{.SEMVER_TAG}}. either pass with `MOD_RELEASE=1.2.3 task release` or set in .env.local file.'
     vars:
       MOD_REPO:
         sh: echo "${PWD##*/}"
