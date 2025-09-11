@@ -77,7 +77,7 @@ def find_markdown_files(directory: Path) -> List[Path]:
     """Find all markdown files in the directory tree."""
     markdown_files = []
     for ext in ['.md', '.markdown']:
-        if markdown_files.extend(directory.rglob(f'.github/**')) or markdown_files.extend(directory.rglob(f'.terraform/**')):
+        if markdown_files.extend(directory.rglob('.github/**')) or markdown_files.extend(directory.rglob('.terraform/**')):
            continue
         else:
             markdown_files.extend(directory.rglob(f'*{ext}'))
