@@ -104,12 +104,6 @@ tasks:
           cd $CWD
         done
 
-  e2e:
-    desc: Run the end 2 end test suite.
-    silent: true
-    cmds:
-      - go test -v ./... -timeout=1h
-
   release:
     desc: Create a new release.
     preconditions:
@@ -124,6 +118,8 @@ tasks:
         sh: git config --local branch.abc-updates.github-pr-base-branch | cut -d'#' -f1
       SEMVER_TAG:
         sh: git describe  --tags --abbrev=0
+    env:
+      MOD_RELEASE: '{{.MOD_RELEASE}}'
     cmds:
       - |
         export MOD_REPO="{{.MOD_REPO}}"
