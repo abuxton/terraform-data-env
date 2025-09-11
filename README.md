@@ -9,7 +9,7 @@ The main contribution, is a use of the terraform local resource to pull the `./t
 
 ## Usage
 
-see [examples](https://github.com/abuxton/terraform-data-env/blob/0.0.6/examples/) folder and [default example](https://github.com/abuxton/terraform-data-env/blob/0.0.6/examples/default/README.md)
+see [examples](./examples/) folder and [default example](./examples/default/README.md)
 
 ### Sentinel usage
 
@@ -48,11 +48,11 @@ worth noting the raw data is also available in the local resource which parses t
 
 ## Authors
 
-Currently maintained by [these contributors](https://github.com/abuxton/terraform-data-env/graphs/contributors).
+Currently maintained by [these contributors](../../graphs/contributors).
 
 ## License
 
-MIT License. See [LICENSE](https://github.com/abuxton/terraform-data-env/blob/0.0.6/LICENSE) for full details.
+MIT License. See [LICENSE](LICENSE) for full details.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
