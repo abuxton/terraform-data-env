@@ -1,0 +1,31 @@
+name: workflow
+
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - '.env.local'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Go
+        uses: actions/setup-go@v4
+        with: { go-version: '1.20' }
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v2
+        with: { terraform_version: '1.9.0' }
+
+      - name: Install Task
+        uses: arduino/setup-task@v1
+        with:
+          version: '3.x'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run release
+        run: task release
