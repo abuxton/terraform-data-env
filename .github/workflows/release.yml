@@ -18,6 +18,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Cofiguring Git
+        run: |-
+          git config user.name $GITHUB_ACTOR
+          git config user.email gh-actions-${GITHUB_ACTOR}@github.com
+
       - name: Install Go
         uses: actions/setup-go@v4
         with: { go-version: '1.20' }
