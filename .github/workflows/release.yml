@@ -31,6 +31,5 @@ jobs:
         with:
           version: '3.x'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Run release
         run: task release
