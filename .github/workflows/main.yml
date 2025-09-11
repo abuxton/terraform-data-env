@@ -1,7 +1,10 @@
 name: workflow
 
 on:
-  pull_request: {}
+  pull_request:
+    types:
+      - opened
+      - edited
   push:
     branches:
       - main
