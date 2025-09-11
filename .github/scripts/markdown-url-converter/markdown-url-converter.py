@@ -48,13 +48,13 @@ def convert_markdown_urls(content: str, base_url: str, file_path: Path, root_dir
 
     # Regular expression patterns for different types of Markdown URLs
     patterns = [
-        # [text](url) format
+        # [text](https://github.com/abuxton/terraform-data-env/blob/0.0.6/.github/scripts/markdown-url-converter/url) format
         (r'\[([^\]]+)\]\((?!http|#|mailto:)([^)]+)\)',
-         lambda m: f'[{m.group(1)}]({urljoin(current_base_url + "/", m.group(2))})'
+         lambda m: f'[{m.group(1)}](https://github.com/abuxton/terraform-data-env/blob/0.0.6/.github/scripts/markdown-url-converter/{urljoin(current_base_url + "/", m.group(2))})'
         ),
-        # ![alt](image-url) format
+        # ![alt](https://github.com/abuxton/terraform-data-env/blob/0.0.6/.github/scripts/markdown-url-converter/image-url) format
         (r'!\[([^\]]*)\]\((?!http|#)([^)]+)\)',
-         lambda m: f'![{m.group(1)}]({urljoin(current_base_url + "/", m.group(2))})'
+         lambda m: f'![{m.group(1)}](https://github.com/abuxton/terraform-data-env/blob/0.0.6/.github/scripts/markdown-url-converter/{urljoin(current_base_url + "/", m.group(2))})'
         ),
         # Reference-style [text][ref] definitions
         (r'^\[([^\]]+)\]:\s*(?!http|#|mailto:)([^\s]+)(.*)$',
