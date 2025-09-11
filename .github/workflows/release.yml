@@ -5,6 +5,11 @@ on:
     types: [closed]
     paths:
       - '.env.local'
+permissions:
+  actions: write
+  contents: write
+  packages: write
+
 
 jobs:
   release:
