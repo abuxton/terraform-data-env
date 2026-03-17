@@ -13,10 +13,10 @@ resource "terraform_data" "test" {
     command = "pwd"
   }
   provisioner "local-exec" {
-    command = "cat ${path.cwd}/.terraform/modules/modules.json | jq . "
+    command = "if command -v jq >/dev/null 2>&1; then if [ -f \"${path.cwd}/.terraform/modules/modules.json\" ]; then cat \"${path.cwd}/.terraform/modules/modules.json\" | jq .; else echo 'modules.json not found at ${path.cwd}/.terraform/modules/modules.json'; fi; else echo 'jq not found; skipping modules.json pretty-print'; fi"
   }
   provisioner "local-exec" {
-    command = "jq ' .Modules[] | { module: .Key, version: .Version  }'  .terraform/modules/modules.json "
+    command = "if command -v jq >/dev/null 2>&1; then if [ -f \"${path.cwd}/.terraform/modules/modules.json\" ]; then jq ' .Modules[] | { module: .Key, version: .Version  }' \"${path.cwd}/.terraform/modules/modules.json\"; else echo 'modules.json not found at ${path.cwd}/.terraform/modules/modules.json'; fi; else echo 'jq not found; skipping modules.json module listing'; fi"
   }
   
   # System Discovery (Docker/Container Context)
@@ -39,7 +39,7 @@ resource "terraform_data" "test" {
     command = "echo '--- Network Interfaces ---'; ip addr || ifconfig || echo 'ip/ifconfig not found'"
   }
   provisioner "local-exec" {
-    command = "echo '--- Installed Tools ---'; git --version; terraform --version; jq --version"
+    command = "echo '--- Installed Tools ---'; git --version; terraform --version; if command -v jq >/dev/null 2>&1; then jq --version; else echo 'jq not found'; fi"
   }
   provisioner "local-exec" {
     command = "echo '--- Environment Variables (Raw) ---'; env | sort"
