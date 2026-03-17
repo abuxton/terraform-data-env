@@ -7,7 +7,7 @@ variable "demo_module_bool" {
 variable "enable_debug_provisioners" {
   type        = bool
   default     = false
-  description = "(Optional) Enable debug local-exec provisioners for system discovery."
+  description = "(Optional) Enable debug local-exec provisioners for system discovery. WARNING: This runs commands that capture environment variables and host diagnostics and may leak secrets or other sensitive runtime details into CI/Terraform Cloud logs. Use only for temporary troubleshooting and disable afterwards."
 }
 
 variable "enable_system_info" {
