@@ -5,4 +5,4 @@
 cat > /dev/null
 
 # Call the actual script
-sh $(dirname "$0")/sys_info.sh
+exec sh "$(dirname "$0")/sys_info.sh"
