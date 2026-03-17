@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "skills": {
+    "create-agentsmd": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "bfbdbb76b17cca970d1d624e36ce72b6847860d740581c8865da796c1fef8552"
+    },
+    "create-readme": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "d0ece1b2164ce1376e4ab6e98d6ac079df3a2a94f5f02224362b6a1ce2516ae9"
+    },
+    "gitattributes-manager": {
+      "source": "abuxton/skills",
+      "sourceType": "github",
+      "computedHash": "144acdc40421ec20e242a1fa926363ef0674eacc0c4ec633f8a714c87705fdc9"
+    },
+    "github-copilot-starter": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "7b29145c2d3255c38d7333c41e2872411f668658c2c2f4782e420400abf08175"
+    },
+    "refactor-module": {
+      "source": "hashicorp/agent-skills",
+      "sourceType": "github",
+      "computedHash": "f506f95f84ff344a3e522f2e58069b632a5b3539d978f00c935ee8bab25b03f0"
+    },
+    "shields-badges": {
+      "source": "abuxton/skills",
+      "sourceType": "github",
+      "computedHash": "285857def59b9514abd6d3d4aaa4e61766dce4288935f9d3f90c4a3ecbd8b6f8"
+    },
+    "terraform-style-guide": {
+      "source": "hashicorp/agent-skills",
+      "sourceType": "github",
+      "computedHash": "1fb650e4627c740f024b80947964769f5f5d58efff54870cef2791324d5aa451"
+    },
+    "terraform-test": {
+      "source": "hashicorp/agent-skills",
+      "sourceType": "github",
+      "computedHash": "5a62d5e759b4720304127bd1e94d405e0f91a907965d87b1117d2b91d7eb2e18"
+    }
+  }
+}
