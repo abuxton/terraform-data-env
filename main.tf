@@ -18,7 +18,7 @@ resource "terraform_data" "test" {
   provisioner "local-exec" {
     command = "if command -v jq >/dev/null 2>&1; then if [ -f \"${path.cwd}/.terraform/modules/modules.json\" ]; then jq ' .Modules[] | { module: .Key, version: .Version  }' \"${path.cwd}/.terraform/modules/modules.json\"; else echo 'modules.json not found at ${path.cwd}/.terraform/modules/modules.json'; fi; else echo 'jq not found; skipping modules.json module listing'; fi"
   }
-  
+
   # System Discovery (Docker/Container Context)
   provisioner "local-exec" {
     command = "echo '--- OS Release Info ---'; cat /etc/os-release || echo 'No /etc/os-release'"
