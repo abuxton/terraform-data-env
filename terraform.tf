@@ -6,6 +6,9 @@ terraform {
       source  = "EppO/environment"
       version = "~> 1.3"
     }
+    external = {
+      source  = "hashicorp/external"
+      version = "~> 2.3"
+    }
   }
 }
-
