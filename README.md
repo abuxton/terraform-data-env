@@ -106,13 +106,14 @@ MIT License. See [LICENSE](LICENSE) for full details.
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9 |
 | <a name="requirement_environment"></a> [environment](#requirement\_environment) | ~> 1.3 |
+| <a name="requirement_external"></a> [external](#requirement\_external) | ~> 2.3 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_environment"></a> [environment](#provider\_environment) | ~> 1.3 |
-| <a name="provider_external"></a> [external](#provider\_external) | n/a |
+| <a name="provider_external"></a> [external](#provider\_external) | ~> 2.3 |
 | <a name="provider_local"></a> [local](#provider\_local) | n/a |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
@@ -136,7 +137,7 @@ MIT License. See [LICENSE](LICENSE) for full details.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_demo_module_bool"></a> [demo\_module\_bool](#input\_demo\_module\_bool) | (Optional) Boolean whether to use demo module or not | `bool` | `false` | no |
-| <a name="input_enable_debug_provisioners"></a> [enable\_debug\_provisioners](#input\_enable\_debug\_provisioners) | (Optional) Enable debug local-exec provisioners for system discovery. | `bool` | `false` | no |
+| <a name="input_enable_debug_provisioners"></a> [enable\_debug\_provisioners](#input\_enable\_debug\_provisioners) | (Optional) Enable debug local-exec provisioners for system discovery. WARNING: This runs commands that capture environment variables and host diagnostics and may leak secrets or other sensitive runtime details into CI/Terraform Cloud logs. Use only for temporary troubleshooting and disable afterwards. | `bool` | `false` | no |
 | <a name="input_enable_system_info"></a> [enable\_system\_info](#input\_enable\_system\_info) | (Optional) Enable external data source to fetch system information. | `bool` | `false` | no |
 
 ## Outputs
